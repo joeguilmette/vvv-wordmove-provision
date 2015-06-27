@@ -2,4 +2,4 @@
 
 config.vm.provision :shell, :path => "provision/install-rvm.sh",  :args => "stable"
 # config.vm.provision :shell, :path => "provision/install-ruby.sh", :args => "1.9.3"
-config.vm.provision :shell, :path => "provision/install-ruby.sh", :args => "2.0.0 rails haml"
+config.vm.provision :shell, :path => "provision/install-ruby.sh", :args => "2.0.0"

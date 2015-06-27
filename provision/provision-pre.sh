@@ -19,7 +19,10 @@ else
 fi
 
 # use ruby 2.0.0 for photocopier
-rvm --default use 2.0.0
+bash -l -c "rvm --default use 2.0.0"
+
+# we can do whatever we want because Vagrant
+sudo chmod -R 777 /usr/local/rvm/gems
 
 # photocopier install
 # once 1.0.0 is released this will be unnecessary
