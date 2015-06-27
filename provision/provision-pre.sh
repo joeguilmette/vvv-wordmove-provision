@@ -24,24 +24,6 @@ bash -l -c "rvm --default use 2.0.0"
 # we can do whatever we want because Vagrant
 sudo chmod -R 777 /usr/local/rvm/gems
 
-# photocopier install
-# once 1.0.0 is released this will be unnecessary
-photocopier_install="$(gem list photocopier -i)"
-
-if [ "$photocopier_install" = true ]; then
-
-	echo "photocopier installed"
-
-else
-
-	echo "photocopier not installed"
-
-	gem install specific_install
-
-	gem specific_install -l	https://github.com/welaika/photocopier.git
-
-fi
-
 # wordmove install
 wordmove_install="$(gem list wordmove -i)"
 
@@ -73,3 +55,18 @@ else
 
 	fi
 fi
+
+# photocopier install
+# once 1.0.0 is released this will be unnecessary
+
+echo "Fix photocopier"
+
+gem uninstall photocopier
+
+gem install specific_install
+
+gem specific_install -l	https://github.com/welaika/photocopier.git
+
+# how to specify which gem to use?
+# wordmove will install the dependent one, 0.1.0
+# so even gem uninstall can't work programmatically
