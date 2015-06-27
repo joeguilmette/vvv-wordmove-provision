@@ -1,0 +1,11 @@
+.bowerrc
+.jshintrc
+.vagrant/
+CONTRIBUTING.md
+LICENSE
+Vagrantfile
+config/
+database/
+log/
+provision/provision.sh
+www/
