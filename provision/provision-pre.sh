@@ -18,11 +18,11 @@ else
 
 fi
 
-# use ruby 2.0.0 for photocopier
+# use ruby 2.0.0
 bash -l -c "rvm --default use 2.0.0"
 
-# we can do whatever we want because Vagrant
-sudo chmod -R 777 /usr/local/rvm/gems
+# set perms for gems
+sudo chown -R vagrant:vagrant /usr/local/rvm/gems/ruby-2.0.0*
 
 # wordmove install
 wordmove_install="$(gem list wordmove -i)"
@@ -35,7 +35,8 @@ else
 
 	echo "wordmove not installed"
 
-	gem install wordmove
+	# once photocopier goes 1.0 we can just install base wordmove
+	gem install wordmove --pre
 
 	wordmove_path="$(gem which wordmove | sed -s 's/.rb/\/deployer\/base.rb/')"
 
@@ -55,18 +56,3 @@ else
 
 	fi
 fi
-
-# photocopier install
-# once 1.0.0 is released this will be unnecessary
-
-echo "Fix photocopier"
-
-gem uninstall photocopier
-
-gem install specific_install
-
-gem specific_install -l	https://github.com/welaika/photocopier.git
-
-# how to specify which gem to use?
-# wordmove will install the dependent one, 0.1.0
-# so even gem uninstall can't work programmatically
